@@ -24,6 +24,12 @@ header {
   border-bottom: 1px solid var(--cornflower);
   background: var(--white);
 }
+button,
+input {
+  font-family: inherit;
+  color: currentColor;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -403,7 +409,7 @@ p {
 .footer-icon-background:focus {
   background-color: var(--green);
 }
-
+/* modal */
 .backdrop {
   position: fixed;
   width: 100%;
@@ -459,4 +465,41 @@ p {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+/* form */
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+.form-heading {
+  max-width: 360px;
+  color: var(--navy-blue);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  margin-top: 72px;
+  margin-bottom: 16px;
+}
+.form-label {
+  display: flex;
+  flex-direction: column;
+
+  color: var(--light-slate);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.48px;
+}
+.form-input {
+  border-radius: 4px;
+  border: 1px solid var(--navy-blue-modal);
+  min-width: 360px;
+  min-height: 40px;
+  margin-top: 4px;
+  margin-bottom: 8px;
 }
