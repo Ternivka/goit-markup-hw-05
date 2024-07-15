@@ -7,7 +7,7 @@
   --light-slate: #8e8f99;
   --cornflower: #e7e9fc;
   --cloud: #f4f4fd;
-  --navy-blue-modal: #2e2f42;
+  --navy-blue-modal: #2e2f4266;
   --grey: #2e2f42;
   --white: #ffffff;
   --dairy: #fcfcfc;
@@ -25,7 +25,8 @@ header {
   background: var(--white);
 }
 button,
-input {
+input,
+textarea {
   font-family: inherit;
   color: currentColor;
 }
@@ -409,6 +410,61 @@ p {
 .footer-icon-background:focus {
   background-color: var(--green);
 }
+.footer-bottom {
+  margin-left: 80px;
+}
+.form-title {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  margin-bottom: 16px;
+}
+.footer-form {
+  display: flex;
+}
+.footer-input {
+  width: 264px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--white);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  background-color: transparent;
+  padding-left: 16px;
+  color: var(--white);
+}
+.footer-input::placeholder {
+  color: var(--white, rgba(46, 47, 66, 0.4));
+}
+.footer-input:hover,
+.footer-input:focus {
+  outline: none;
+}
+.footer-form-btn {
+  min-width: 165px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--iris);
+  border: none;
+  color: var(--white);
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.64px;
+  cursor: pointer;
+  gap: 16px;
+  margin-left: 24px;
+  padding: 8px 24px;
+}
+.footer-form-icon {
+  margin-left: 16px;
+  fill: var(--white);
+}
 /* modal */
 .backdrop {
   position: fixed;
@@ -416,21 +472,21 @@ p {
   height: 100%;
   background-color: #58585856;
   top: 0;
-  transition: opacity 300ms linear, visibility 300ms linear;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
   width: 408px;
-  min-height: 584px;
   border-radius: 4px;
   background: var(--dairy);
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scaleY(1);
-
-  transition: transform 300ms linear;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 72px 24px 24px 24px;
 }
 .backdrop.is-hidden .modal {
   transform: translate(-50%, -50%) scaleY(0);
@@ -466,40 +522,145 @@ p {
   visibility: hidden;
   pointer-events: none;
 }
-
-/* form */
-.form {
-  display: flex;
-  flex-direction: column;
-  padding-right: 24px;
-  padding-left: 24px;
-}
-.form-heading {
-  max-width: 360px;
+.modal-title {
+  text-align: center;
   color: var(--navy-blue);
   text-align: center;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.32px;
-  margin-top: 72px;
   margin-bottom: 16px;
 }
-.form-label {
-  display: flex;
-  flex-direction: column;
-
-  color: var(--light-slate);
+/* form */
+.modal-field {
+  margin-bottom: 8px;
+}
+.modal-label {
   font-size: 12px;
-  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.48px;
+  color: var(--light-slate);
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.modal-input-wrap {
+  position: relative;
+  margin-bottom: 8px;
+}
+.modal-input {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid var(--navy-blue-modal, rgba(46, 47, 66, 0.4));
+  padding-left: 38px;
+  box-sizing: border-box;
+  outline: transparent;
+  transition: border-color 200ms ease;
+}
+.modal-input:focus {
+  border-color: var(--iris);
+}
+.modal-input:focus + .modal-form-icon {
+  fill: var(--iris);
+}
+.modal-form-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: fill 200ms ease;
+}
+.modal-comment {
+  width: 100%;
+  height: 120px;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid var(--navy-blue-modal, rgba(46, 47, 66, 0.4));
+  padding-left: 16px;
+  padding-top: 8px;
+  box-sizing: border-box;
+  outline: transparent;
+  transition: border-color 200ms ease;
+  resize: none;
+}
+.modal-comment::placeholder {
+  color: var(--navy-blue-modal, rgba(46, 47, 66, 0.4));
+  font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.48px;
 }
-.form-input {
+.modal-comment:focus {
+  border-color: var(--iris);
+}
+
+.modal-check-text {
+  color: var(--light-slate);
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+.modal-check-link {
+  color: var(--iris);
+  text-decoration-line: underline;
+  padding-left: 2px;
+}
+.modal-check-text span {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  fill: transparent;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-check:checked + .modal-check-text span {
+  background-color: var(--iris);
+  fill: var(--cloud);
+  border: none;
+}
+.modal-form-btn {
+  display: block;
+  min-width: 169px;
+  height: 56px;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  cursor: pointer;
+  background-color: var(--iris);
+  border: none;
   border-radius: 4px;
-  border: 1px solid var(--navy-blue-modal);
-  min-width: 360px;
-  min-height: 40px;
-  margin-top: 4px;
-  margin-bottom: 8px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 24px;
+  margin-left: 120px;
+}
+.modal-form-btn:hover,
+.modal-form-btn:focus {
+  background: var(--ocean);
+}
+
+/* ---------visually-hidden---------------*/
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
